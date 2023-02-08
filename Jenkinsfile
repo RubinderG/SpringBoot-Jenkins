@@ -61,6 +61,7 @@ pipeline {
 			steps{
 			sh '''ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
 			docker rm -f javabuild
+			docker rmi rubinder/springdemo:latest
 			'''
 			}
 		}
