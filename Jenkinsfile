@@ -1,3 +1,12 @@
+//to look at the different branches
+if ("${GIT_BRANCH}" == 'origin/main') {   
+	//rubinder instance where jenkins is running
+	 AppIP="34.65.54.32"} 
+	 else if ("${GIT_BRANCH}" == 'origin/development') {    
+		//dev server i've created
+		AppIP="34.78.50.242"
+	 }
+
 pipeline {
 	agent any
 	environment {
