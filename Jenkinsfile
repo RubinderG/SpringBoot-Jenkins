@@ -1,4 +1,12 @@
-//You can edit your jenkinsfile to conditionally check the branch name, then create a new jenkins job to look for your development branch, see main
+//to look at the different branches
+if ("${GIT_BRANCH}" == 'origin/main') {   
+	//rubinder instance where jenkins is running
+	 AppIP="34.65.54.32"} 
+	 else if ("${GIT_BRANCH}" == 'origin/development') {    
+		//dev server i've created
+		AppIP="34.78.50.242"
+	 }
+
 pipeline {
 	agent any
 	environment {
@@ -53,6 +61,7 @@ pipeline {
 			steps{
 			sh '''ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
 			docker rm -f javabuild
+			docker rmi rubinder/springdemo:latest
 			'''
 			}
 		}
@@ -65,4 +74,3 @@ pipeline {
 		}
 	}
 }
-//hello
